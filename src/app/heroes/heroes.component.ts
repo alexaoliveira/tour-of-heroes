@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HEROES } from '../mock-heroes';
 import { Hero } from './hero.model';
 
 @Component({
@@ -7,14 +8,15 @@ import { Hero } from './hero.model';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  hero: Hero = {
-    id: 1,
-    name: 'Wolverine',
-  };
-
-  constructor() { }
-
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
+
+  heroes = HEROES;
+  selectedHero?: Hero;
+
+  onSelect(hero: Hero): void{
+    this.selectedHero = hero;
+ }
 
 }
