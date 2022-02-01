@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
 import { Hero } from './hero.model';
 
 @Component({
@@ -8,12 +8,20 @@ import { Hero } from './hero.model';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
+
+
+  heroes: Hero[] = [];
+  selectedHero?: Hero;
+
+  constructor(private heroService: HeroService){}
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.GetHeroes();
   }
 
-  heroes = HEROES;
-  selectedHero?: Hero;
+  GetHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
 
   onSelect(hero: Hero): void{
     this.selectedHero = hero;
